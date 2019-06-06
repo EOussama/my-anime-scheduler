@@ -5,6 +5,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'welcome' },
   { path: 'welcome', component: WelcomeComponent }
 ];
 

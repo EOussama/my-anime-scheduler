@@ -1,0 +1,46 @@
+@import './../../../sass/utils/colors';
+
+.welcome-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+
+  &__logo {
+    margin-top: 50px;
+    width: 130px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__header {
+    text-align: center;
+
+    .subtitle {
+      color: $color-primary;
+      font-weight: 200;
+      margin: 5px 0;
+      padding: 0;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 80px 0 20px 0;
+    min-height: 100px;
+
+    button {
+      margin-bottom: 5px;
+      width: 100%;
+    }
+  }
+}
