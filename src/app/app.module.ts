@@ -7,11 +7,13 @@ import { MatButtonModule, MatIconModule } from "@angular/material";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { RequirementBtnComponent } from './components/requirement-btn/requirement-btn.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
+    RequirementBtnComponent,
   ],
   imports: [
     BrowserModule,

@@ -67,28 +67,29 @@ export class WelcomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    if (Notification.permission !== "granted") {
-      Notification.requestPermission().then((permission) => {
-        if (permission === 'granted') {
-          console.log('TODO let use know');
-        } else {
-          console.log('Revoke access');
-        }
-      });
-    }
-  }
+  ngOnInit(): void { }
 
   loadMALAccount(): void {
+    console.info('[MAS] MAL Account loaded!');
     this.requiredSteps.MALAccount = true;
   }
 
   grantPermission(): void {
-    this.requiredSteps.permission = true;
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        console.info('[MAS] Notifications permission granted!');
+        this.requiredSteps.permission = true;
+      } else {
+        console.warn('You must grant notifications permission in order for MAS to work properly!');
+        this.requiredSteps.permission = false;
+      }
+    });
+    if (Notification.permission !== "granted") {
+    }
   }
 
   onStartClicked(): void {
-
+    console.log('Get started');
   }
 
   isExtReady(): boolean {

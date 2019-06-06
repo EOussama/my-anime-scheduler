@@ -1,0 +1,7 @@
+<button mat-stroked-button
+  color="primary"
+  (click)="onClick()">
+  <mat-icon [ngClass]="{true: this.state, false: !this.state}">
+    {{ this.state === true ? this.trueIcon : this.falseIcon }}</mat-icon>
+  <span>{{ this.text }}</span>
+</button>

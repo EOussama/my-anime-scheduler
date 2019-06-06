@@ -1,0 +1,18 @@
+button {
+  margin-bottom: 5px;
+  width: 100%;
+
+  text-align: left;
+
+  mat-icon {
+    margin-right: 8px;
+
+    &.true {
+      color: green;
+    }
+
+    &.false {
+      color: orange;
+    }
+  }
+}

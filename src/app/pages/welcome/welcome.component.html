@@ -11,20 +11,18 @@
   </div>
 
   <div class="welcome-wrapper__content">
-    <button mat-stroked-button
-      color="primary"
-      [@fadeLoadButton]="'in'"
-      (click)="loadMALAccount()">
-      <mat-icon>info</mat-icon>
-      <span>Load MAL account</span>
-    </button>
-    <button mat-stroked-button
-      color="primary"
-      [@fadePermButton]="'in'"
-      (click)="grantPermission()">
-      <mat-icon>info</mat-icon>
-      <span>Grant notification permission</span>
-    </button>
+    <app-requirement-btn [prop-true-icon]="'check_circle'"
+      [prop-true-icon]="'info'"
+      [prop-text]="'Load MAL account'"
+      [prop-state]="this.requiredSteps.MALAccount"
+      (onClickEvent)="loadMALAccount()"
+      [@fadeLoadButton]="'in'"></app-requirement-btn>
+    <app-requirement-btn [prop-true-icon]="'check_circle'"
+      [prop-true-icon]="'info'"
+      [prop-text]="'Grant notification permission'"
+      [prop-state]="this.requiredSteps.permission"
+      (onClickEvent)="grantPermission()"
+      [@fadePermButton]="'in'"></app-requirement-btn>
     <button mat-flat-button
       color="primary"
       [disabled]="!this.isExtReady()"
