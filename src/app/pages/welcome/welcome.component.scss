@@ -43,6 +43,14 @@
 
       &:not(:last-of-type) {
         margin-bottom: 5px;
+
+        text-align: left;
+
+        mat-icon {
+          margin-right: 8px;
+
+          color: orange;
+        }
       }
 
       &:last-of-type {

@@ -60,6 +60,11 @@ import { trigger, state, style, transition, animate, stagger } from '@angular/an
 })
 export class WelcomeComponent implements OnInit {
 
+  requiredSteps = {
+    MALAccount: false,
+    permission: false
+  };
+
   constructor() { }
 
   ngOnInit(): void {
@@ -75,14 +80,18 @@ export class WelcomeComponent implements OnInit {
   }
 
   loadMALAccount(): void {
-
+    this.requiredSteps.MALAccount = true;
   }
 
   grantPermission(): void {
-
+    this.requiredSteps.permission = true;
   }
 
   onStartClicked(): void {
 
+  }
+
+  isExtReady(): boolean {
+    return this.requiredSteps.MALAccount === true && this.requiredSteps.permission === true;
   }
 }

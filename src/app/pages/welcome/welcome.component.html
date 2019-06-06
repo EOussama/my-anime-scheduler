@@ -11,18 +11,26 @@
   </div>
 
   <div class="welcome-wrapper__content">
-    <button [@fadeLoadButton]="'in'"
+    <button mat-stroked-button
       color="primary"
-      mat-stroked-button
-      (click)="loadMALAccount()">Load MAL account</button>
-    <button [@fadePermButton]="'in'"
+      [@fadeLoadButton]="'in'"
+      (click)="loadMALAccount()">
+      <mat-icon>info</mat-icon>
+      <span>Load MAL account</span>
+    </button>
+    <button mat-stroked-button
       color="primary"
-      mat-stroked-button
-      (click)="grantPermission()">Grant notification
-      permission</button>
-    <button [@fadeStartButton]="'in'"
+      [@fadePermButton]="'in'"
+      (click)="grantPermission()">
+      <mat-icon>info</mat-icon>
+      <span>Grant notification permission</span>
+    </button>
+    <button mat-flat-button
       color="primary"
-      mat-raised-button
-      (click)="onStartClicked()">Get started</button>
+      [disabled]="!this.isExtReady()"
+      [@fadeStartButton]="'in'"
+      (click)="onStartClicked()">
+      Get started
+    </button>
   </div>
 </div>
