@@ -1,14 +1,28 @@
 <div class="welcome-wrapper">
-  <div [@fadeLogo]="'in'" class="welcome-wrapper__logo">
-    <img src="assets/icon-title.png" alt="MAS logo">
+  <div [@fadeLogo]="'in'"
+    class="welcome-wrapper__logo">
+    <img src="assets/icon-title.png"
+      alt="MAS logo">
   </div>
 
-  <div [@fadeSubtitle]="'in'" class="welcome-wrapper__header">
+  <div [@fadeSubtitle]="'in'"
+    class="welcome-wrapper__header">
     <p class="subtitle">You do the watching, we do the tracking!</p>
   </div>
 
-  <div [@fadeButtons]="'in'" class="welcome-wrapper__content">
-    <button color="primary" mat-stroked-button>Load MAL account</button>
-    <button color="primary" mat-stroked-button>Grant notification permission</button>
+  <div class="welcome-wrapper__content">
+    <button [@fadeLoadButton]="'in'"
+      color="primary"
+      mat-stroked-button
+      (click)="loadMALAccount()">Load MAL account</button>
+    <button [@fadePermButton]="'in'"
+      color="primary"
+      mat-stroked-button
+      (click)="grantPermission()">Grant notification
+      permission</button>
+    <button [@fadeStartButton]="'in'"
+      color="primary"
+      mat-raised-button
+      (click)="onStartClicked()">Get started</button>
   </div>
 </div>

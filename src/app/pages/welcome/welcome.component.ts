@@ -26,7 +26,17 @@ import { trigger, state, style, transition, animate, stagger } from '@angular/an
         animate('0.6s 0.8s ease-in-out')
       ])
     ]),
-    trigger('fadeButtons', [
+    trigger('fadeLoadButton', [
+      state('in', style({ opacity: '1' })),
+      transition('void => in', [
+        style({
+          transform: 'translateY(20px)',
+          opacity: 0
+        }),
+        animate('0.6s 1s ease-in-out')
+      ])
+    ]),
+    trigger('fadePermButton', [
       state('in', style({ opacity: '1' })),
       transition('void => in', [
         style({
@@ -34,6 +44,16 @@ import { trigger, state, style, transition, animate, stagger } from '@angular/an
           opacity: 0
         }),
         animate('0.6s 1.3s ease-in-out')
+      ])
+    ]),
+    trigger('fadeStartButton', [
+      state('in', style({ opacity: '1' })),
+      transition('void => in', [
+        style({
+          transform: 'translateY(20px)',
+          opacity: 0
+        }),
+        animate('0.6s 1.6s ease-in-out')
       ])
     ])
   ]
@@ -52,5 +72,17 @@ export class WelcomeComponent implements OnInit {
         }
       });
     }
+  }
+
+  loadMALAccount(): void {
+
+  }
+
+  grantPermission(): void {
+
+  }
+
+  onStartClicked(): void {
+
   }
 }

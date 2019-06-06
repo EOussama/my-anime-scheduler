@@ -39,8 +39,15 @@
     min-height: 100px;
 
     button {
-      margin-bottom: 5px;
       width: 100%;
+
+      &:not(:last-of-type) {
+        margin-bottom: 5px;
+      }
+
+      &:last-of-type {
+        margin-top: 15px;
+      }
     }
   }
 }
