@@ -7,19 +7,15 @@
 
   <div [@fadeSubtitle]="'in'"
     class="welcome-wrapper__header">
-    <p class="subtitle">You do the watching, we do the tracking!</p>
+    <p class="subtitle">You do the watching, we do the tracking</p>
   </div>
 
   <div class="welcome-wrapper__content">
-    <app-requirement-btn [prop-true-icon]="'check_circle'"
-      [prop-true-icon]="'info'"
-      [prop-text]="'Load MAL account'"
+    <app-requirement-btn [prop-text]="'Load MAL account'"
       [prop-state]="this.requiredSteps.MALAccount"
       (onClickEvent)="loadMALAccount()"
       [@fadeLoadButton]="'in'"></app-requirement-btn>
-    <app-requirement-btn [prop-true-icon]="'check_circle'"
-      [prop-true-icon]="'info'"
-      [prop-text]="'Grant notification permission'"
+    <app-requirement-btn [prop-text]="'Grant notification permission'"
       [prop-state]="this.requiredSteps.permission"
       (onClickEvent)="grantPermission()"
       [@fadePermButton]="'in'"></app-requirement-btn>
