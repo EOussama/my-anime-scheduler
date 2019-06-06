@@ -9,7 +9,15 @@ export class WelcomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          console.log('TODO let use know');
+        } else {
+          console.log('Revoke access');
+        }
+      });
+    }
   }
-
 }
