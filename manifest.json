@@ -10,7 +10,9 @@
     "default_icon": "assets/icon.png",
     "default_popup": "index.html"
   },
-  "permissions": [],
+  "permissions": [
+    "notifications"
+  ],
   "web_accessible_resources": [
     "*",
     "assets/*"
