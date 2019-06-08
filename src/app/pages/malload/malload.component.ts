@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MalAccountLoaderService } from 'src/app/shared/services/mal-account-loader.service';
+
 @Component({
   selector: 'app-malload',
   templateUrl: './malload.component.html',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MALloadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private malLoader: MalAccountLoaderService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+  }
+
+  onClick(): void {
+    this.malLoader.onMALAccountLoaded(true);
   }
 }

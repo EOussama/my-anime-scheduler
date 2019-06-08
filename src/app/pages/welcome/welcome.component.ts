@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Subscription } from 'rxjs';
+
+import { MalAccountLoaderService } from 'src/app/shared/services/mal-account-loader.service';
 
 @Component({
   selector: 'app-welcome',
@@ -61,14 +64,29 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class WelcomeComponent implements OnInit {
 
+  /**
+   * The MAL loader subscription
+   */
+  private malLoaderSubscription: Subscription;
+
+  /**
+   * The requirements object
+   */
   requiredSteps = {
     MALAccount: false,
     permission: false
   };
 
-  constructor(private route: Router) { }
+  constructor(
+    private route: Router,
+    private malLoader: MalAccountLoaderService
+  ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.malLoaderSubscription = this.malLoader.loadMALAccount().subscribe((accountLoaded: boolean) => {
+      console.log('Singnaled!', accountLoaded);
+    });
+  }
 
   loadMALAccount(): void {
     this.route.navigate(['malload']);
@@ -92,6 +110,7 @@ export class WelcomeComponent implements OnInit {
 
   onStartClicked(): void {
     console.log('Get started');
+    this.malLoaderSubscription.unsubscribe();
   }
 
   isExtReady(): boolean {
