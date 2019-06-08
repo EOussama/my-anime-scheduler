@@ -3,6 +3,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { StateService } from '../../services/state.service';
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
 
 @Component({
@@ -47,23 +48,16 @@ export class ControlPanelComponent implements OnInit {
   */
   private malLoaderSubscription: Subscription;
 
-  /**
-  * The requirements object
-  */
-  requiredSteps = {
-    MALAccount: false,
-    permission: false
-  };
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private malLoader: MalAccountLoaderService
+    private malLoader: MalAccountLoaderService,
+    public state: StateService
   ) { }
 
   ngOnInit(): void {
-    this.malLoader.loadMALAccount().subscribe((accountLoaded: boolean) => {
-      this.requiredSteps.MALAccount = accountLoaded;
+    this.malLoaderSubscription = this.malLoader.loadMALAccount().subscribe((accountLoaded: boolean) => {
+      this.state.requiredSteps.MALAccount = accountLoaded;
     });
   }
 
@@ -76,13 +70,14 @@ export class ControlPanelComponent implements OnInit {
     Notification.requestPermission().then((permission) => {
       if (permission === 'granted') {
         console.info('[MAS] Notifications permission granted!');
-        this.requiredSteps.permission = true;
+        this.state.requiredSteps.permission = true;
       } else {
         console.warn('You must grant notifications permission in order for MAS to work properly!');
-        this.requiredSteps.permission = false;
+        this.state.requiredSteps.permission = false;
       }
     });
     if (Notification.permission !== "granted") {
+      this.state.requiredSteps.permission = false;
     }
   }
 
@@ -92,6 +87,6 @@ export class ControlPanelComponent implements OnInit {
   }
 
   isExtReady(): boolean {
-    return this.requiredSteps.MALAccount === true && this.requiredSteps.permission === true;
+    return this.state.requiredSteps.MALAccount === true && this.state.requiredSteps.permission === true;
   }
 }
