@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { StateService } from './services/state.service';
 
 @Component({
   selector: 'app-welcome',
@@ -30,8 +31,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private state: StateService
+  ) { }
 
   ngOnInit(): void {
+    this.state.requiredSteps.permission = Notification.permission === 'granted';
   }
 }

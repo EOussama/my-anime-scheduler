@@ -33,7 +33,6 @@ import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-acco
       state('in', style({ opacity: '1' })),
       transition('void => in', [
         style({
-          transform: 'translateY(20px)',
           opacity: 0
         }),
         animate('0.5s 0.6s ease-in-out')
