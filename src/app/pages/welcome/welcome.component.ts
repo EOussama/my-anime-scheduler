@@ -13,7 +13,7 @@ import { trigger, state, style, transition, animate, stagger } from '@angular/an
           transform: 'translateY(50px)',
           opacity: 0
         }),
-        animate('1s ease-in-out')
+        animate('0.8s ease-in-out')
       ])
     ]),
     trigger('fadeSubtitle', [
@@ -23,7 +23,7 @@ import { trigger, state, style, transition, animate, stagger } from '@angular/an
           transform: 'translateY(20px)',
           opacity: 0
         }),
-        animate('0.6s 0.8s ease-in-out')
+        animate('0.5s 0.3s ease-in-out')
       ])
     ]),
     trigger('fadeLoadButton', [
@@ -33,7 +33,7 @@ import { trigger, state, style, transition, animate, stagger } from '@angular/an
           transform: 'translateY(20px)',
           opacity: 0
         }),
-        animate('0.6s 1s ease-in-out')
+        animate('0.5s 0.4s ease-in-out')
       ])
     ]),
     trigger('fadePermButton', [
@@ -43,7 +43,7 @@ import { trigger, state, style, transition, animate, stagger } from '@angular/an
           transform: 'translateY(20px)',
           opacity: 0
         }),
-        animate('0.6s 1.3s ease-in-out')
+        animate('0.5s 0.5s ease-in-out')
       ])
     ]),
     trigger('fadeStartButton', [
@@ -53,7 +53,7 @@ import { trigger, state, style, transition, animate, stagger } from '@angular/an
           transform: 'translateY(20px)',
           opacity: 0
         }),
-        animate('0.6s 1.6s ease-in-out')
+        animate('0.5s 0.6s ease-in-out')
       ])
     ])
   ]
