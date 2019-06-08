@@ -11,20 +11,6 @@
   </div>
 
   <div class="welcome-wrapper__content">
-    <app-requirement-btn [prop-text]="'Load MAL account'"
-      [prop-state]="this.requiredSteps.MALAccount"
-      (onClickEvent)="loadMALAccount()"
-      [@fadeLoadButton]="'in'"></app-requirement-btn>
-    <app-requirement-btn [prop-text]="'Grant notification permission'"
-      [prop-state]="this.requiredSteps.permission"
-      (onClickEvent)="grantPermission()"
-      [@fadePermButton]="'in'"></app-requirement-btn>
-    <button mat-flat-button
-      color="primary"
-      [disabled]="!this.isExtReady()"
-      [@fadeStartButton]="'in'"
-      (click)="onStartClicked()">
-      Get started
-    </button>
+    <router-outlet></router-outlet>
   </div>
 </div>

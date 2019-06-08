@@ -1,9 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Subscription } from 'rxjs';
-
-import { MalAccountLoaderService } from 'src/app/shared/services/mal-account-loader.service';
 
 @Component({
   selector: 'app-welcome',
@@ -29,91 +25,13 @@ import { MalAccountLoaderService } from 'src/app/shared/services/mal-account-loa
         }),
         animate('0.5s 0.3s ease-in-out')
       ])
-    ]),
-    trigger('fadeLoadButton', [
-      state('in', style({ opacity: '1' })),
-      transition('void => in', [
-        style({
-          transform: 'translateY(20px)',
-          opacity: 0
-        }),
-        animate('0.5s 0.4s ease-in-out')
-      ])
-    ]),
-    trigger('fadePermButton', [
-      state('in', style({ opacity: '1' })),
-      transition('void => in', [
-        style({
-          transform: 'translateY(20px)',
-          opacity: 0
-        }),
-        animate('0.5s 0.5s ease-in-out')
-      ])
-    ]),
-    trigger('fadeStartButton', [
-      state('in', style({ opacity: '1' })),
-      transition('void => in', [
-        style({
-          transform: 'translateY(20px)',
-          opacity: 0
-        }),
-        animate('0.5s 0.6s ease-in-out')
-      ])
     ])
   ]
 })
 export class WelcomeComponent implements OnInit {
 
-  /**
-   * The MAL loader subscription
-   */
-  private malLoaderSubscription: Subscription;
-
-  /**
-   * The requirements object
-   */
-  requiredSteps = {
-    MALAccount: false,
-    permission: false
-  };
-
-  constructor(
-    private route: Router,
-    private malLoader: MalAccountLoaderService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.malLoaderSubscription = this.malLoader.loadMALAccount().subscribe((accountLoaded: boolean) => {
-      console.log('Singnaled!', accountLoaded);
-    });
-  }
-
-  loadMALAccount(): void {
-    this.route.navigate(['malload']);
-    console.info('[MAS] MAL Account loaded!');
-    this.requiredSteps.MALAccount = true;
-  }
-
-  grantPermission(): void {
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted') {
-        console.info('[MAS] Notifications permission granted!');
-        this.requiredSteps.permission = true;
-      } else {
-        console.warn('You must grant notifications permission in order for MAS to work properly!');
-        this.requiredSteps.permission = false;
-      }
-    });
-    if (Notification.permission !== "granted") {
-    }
-  }
-
-  onStartClicked(): void {
-    console.log('Get started');
-    this.malLoaderSubscription.unsubscribe();
-  }
-
-  isExtReady(): boolean {
-    return this.requiredSteps.MALAccount === true && this.requiredSteps.permission === true;
   }
 }
