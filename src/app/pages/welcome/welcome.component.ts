@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate, stagger } from '@angular/animations';
+import { Router } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-welcome',
@@ -65,11 +66,12 @@ export class WelcomeComponent implements OnInit {
     permission: false
   };
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void { }
 
   loadMALAccount(): void {
+    this.route.navigate(['malload']);
     console.info('[MAS] MAL Account loaded!');
     this.requiredSteps.MALAccount = true;
   }

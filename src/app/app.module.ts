@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { RequirementBtnComponent } from './components/requirement-btn/requirement-btn.component';
+import { MALloadComponent } from './pages/malload/malload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     RequirementBtnComponent,
+    MALloadComponent,
   ],
   imports: [
     BrowserModule,
