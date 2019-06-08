@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate, query, animateChild, group } from '@angular/animations';
+import { RouterOutlet } from '@angular/router';
+
 import { StateService } from './services/state.service';
 
 @Component({
@@ -37,5 +39,9 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.state.requiredSteps.permission = Notification.permission === 'granted';
+  }
+
+  prepareRoute(outlet: RouterOutlet): void {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }
