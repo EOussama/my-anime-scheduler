@@ -25,3 +25,11 @@
 }
 
 // #endregion
+
+// #region Selection
+
+::selection {
+  background-color: lighten($color-primary, 45%);
+}
+
+// #endregion

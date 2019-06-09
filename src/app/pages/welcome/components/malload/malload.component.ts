@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { StateService } from '../../services/state.service';
 
 @Component({
   selector: 'app-malload',
@@ -17,10 +18,5 @@ export class MALloadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  onClick(): void {
-    this.router.navigate([''], { relativeTo: this.route });
-    this.malLoader.onMALAccountLoaded(true);
   }
 }

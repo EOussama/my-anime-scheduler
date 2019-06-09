@@ -19,11 +19,6 @@ import { fadeLoadButton, fadePermButton, fadeStartButton } from './animations/an
 })
 export class ControlPanelComponent implements OnInit {
 
-  /**
-  * The MAL loader subscription
-  */
-  private malLoaderSubscription: Subscription;
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -32,7 +27,7 @@ export class ControlPanelComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.malLoaderSubscription = this.malLoader.loadMALAccount().subscribe((accountLoaded: boolean) => {
+    this.state.malLoaderSubscription = this.malLoader.loadMALAccount().subscribe((accountLoaded: boolean) => {
       this.state.requiredSteps.MALAccount = accountLoaded;
     });
   }
@@ -59,7 +54,6 @@ export class ControlPanelComponent implements OnInit {
 
   onStartClicked(): void {
     console.log('Get started');
-    this.malLoaderSubscription.unsubscribe();
   }
 
   isExtReady(): boolean {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { StateService } from './services/state.service';
@@ -16,7 +16,7 @@ import { routeAnimation } from "./animations/routing-animations";
     routeAnimation
   ]
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private state: StateService
@@ -24,6 +24,10 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.state.requiredSteps.permission = Notification.permission === 'granted';
+  }
+
+  ngOnDestroy(): void {
+    this.state.malLoaderSubscription.unsubscribe();
   }
 
   prepareRoute(outlet: RouterOutlet): void {
