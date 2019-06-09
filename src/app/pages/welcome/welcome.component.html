@@ -10,7 +10,8 @@
     <p class="subtitle">You do the watching, we do the tracking</p>
   </div>
 
-  <div class="welcome-wrapper__content">
-    <router-outlet></router-outlet>
+  <div [@routeAnimations]="prepareRoute(outlet)"
+    class="welcome-wrapper__content">
+    <router-outlet #outlet="outlet"></router-outlet>
   </div>
 </div>

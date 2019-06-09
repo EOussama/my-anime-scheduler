@@ -9,8 +9,8 @@ import { MALloadComponent } from './components/malload/malload.component';
 const routes: Routes = [
   {
     path: 'welcome', component: WelcomeComponent, children: [
-      { path: '', component: ControlPanelComponent },
-      { path: 'malload', component: MALloadComponent }
+      { path: '', component: ControlPanelComponent, data: { animation: 'ctrlpanel' } },
+      { path: 'malload', component: MALloadComponent, data: { animation: 'malload' } }
     ]
   }
 ];

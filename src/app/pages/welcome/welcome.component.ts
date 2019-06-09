@@ -1,34 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate, query, animateChild, group } from '@angular/animations';
 import { RouterOutlet } from '@angular/router';
 
 import { StateService } from './services/state.service';
+
+import { fadeLogo, fadeSubtitle } from "./animations/animations";
+import { routeAnimation } from "./animations/routing-animations";
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
   animations: [
-    trigger('fadeLogo', [
-      state('in', style({ opacity: '1' })),
-      transition('void => in', [
-        style({
-          transform: 'translateY(50px)',
-          opacity: 0
-        }),
-        animate('0.8s ease-in-out')
-      ])
-    ]),
-    trigger('fadeSubtitle', [
-      state('in', style({ opacity: '1' })),
-      transition('void => in', [
-        style({
-          transform: 'translateY(20px)',
-          opacity: 0
-        }),
-        animate('0.5s 0.3s ease-in-out')
-      ])
-    ])
+    fadeLogo,
+    fadeSubtitle,
+    routeAnimation
   ]
 })
 export class WelcomeComponent implements OnInit {
