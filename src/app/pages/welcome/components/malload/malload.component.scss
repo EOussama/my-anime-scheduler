@@ -1,7 +1,28 @@
 .malload-wrapper {
-  border: 1px dashed green;
+  // border: 1px dashed green;
+
+  display: flex;
+  flex-direction: row;
+
   height: 100%;
+  width: 100%;
+
   overflow-x: hidden;
   overflow-y: auto;
-  width: 100%;
+
+  &__steps {
+    height: 100%;
+  }
+
+  &__content {
+    margin: 0 20px;
+    height: 100%;
+
+    .user-fetch-step {
+      button,
+      input {
+        width: 100%;
+      }
+    }
+  }
 }

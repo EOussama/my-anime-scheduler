@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatIconModule } from "@angular/material";
+import { MatButtonModule, MatIconModule, MatInputModule } from "@angular/material";
 
 import { WelcomeRoutingModule } from './welcome-routing.module';
 
@@ -28,6 +28,7 @@ import { StepComponent } from 'src/app/shared/components/steps/step/step.compone
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
+    MatInputModule,
     WelcomeRoutingModule,
   ],
   providers: [StateService],
