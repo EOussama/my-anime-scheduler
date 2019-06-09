@@ -1,4 +1,5 @@
-<div class="step"
-  [ngClass]="{'active': this.step.state}">
+<div #stepRef
+  [ngClass]="{'active': this.step.state}"
+  class="step">
   <span class="step__content">{{ this.step.content }}</span>
 </div>

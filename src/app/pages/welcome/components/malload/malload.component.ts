@@ -13,8 +13,8 @@ export class MALloadComponent implements OnInit {
 
   steps: Step[] = [
     new Step('1'),
-    new Step('2'),
-    new Step('3')
+    new Step('2', 40),
+    new Step('3', 40)
   ]
 
   constructor(

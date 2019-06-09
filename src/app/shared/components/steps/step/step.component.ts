@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Step } from 'src/app/shared/models/step';
 
 @Component({
@@ -10,8 +10,13 @@ export class StepComponent implements OnInit {
 
   @Input() step: Step;
 
+  @ViewChild('stepRef') stepRef: ElementRef;
+
   constructor() { }
 
   ngOnInit(): void {
+    const stepElement: HTMLElement = this.stepRef.nativeElement;
+
+    stepElement.style.marginTop = `${this.step.offset}px`;
   }
 }
