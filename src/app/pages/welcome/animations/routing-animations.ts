@@ -9,13 +9,13 @@ export const routeAnimation = trigger('routeAnimations', [
       })
     ]),
     query(':leave', [
-      animate('300ms ease-in-out', style({
+      animate('300ms ease-out', style({
         opacity: '0',
         transform: 'translateY(100px)'
       }))
     ]),
     query(':enter', [
-      animate('300ms ease-in-out', style({
+      animate('300ms ease-out', style({
         opacity: '1',
         transform: 'translateY(0px)'
       }))
