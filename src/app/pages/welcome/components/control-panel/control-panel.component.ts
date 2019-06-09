@@ -1,43 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { StateService } from '../../services/state.service';
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
+
+import { fadeLoadButton, fadePermButton, fadeStartButton } from './animations/animations'
 
 @Component({
   selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
   styleUrls: ['./control-panel.component.scss'],
   animations: [
-    trigger('fadeLoadButton', [
-      state('in', style({ opacity: '1' })),
-      transition('void => in', [
-        style({
-          opacity: 0
-        }),
-        animate('0.5s 0.4s ease-in-out')
-      ])
-    ]),
-    trigger('fadePermButton', [
-      state('in', style({ opacity: '1' })),
-      transition('void => in', [
-        style({
-          opacity: 0
-        }),
-        animate('0.5s 0.5s ease-in-out')
-      ])
-    ]),
-    trigger('fadeStartButton', [
-      state('in', style({ opacity: '1' })),
-      transition('void => in', [
-        style({
-          opacity: 0
-        }),
-        animate('0.5s 0.6s ease-in-out')
-      ])
-    ])
+    fadeLoadButton,
+    fadePermButton,
+    fadeStartButton
   ]
 })
 export class ControlPanelComponent implements OnInit {
