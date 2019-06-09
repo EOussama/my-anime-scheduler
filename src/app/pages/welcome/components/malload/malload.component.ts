@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { StateService } from '../../services/state.service';
+import { Step } from 'src/app/shared/models/step';
 
 @Component({
   selector: 'app-malload',
@@ -10,6 +10,12 @@ import { StateService } from '../../services/state.service';
   styleUrls: ['./malload.component.scss']
 })
 export class MALloadComponent implements OnInit {
+
+  steps: Step[] = [
+    new Step('1'),
+    new Step('2'),
+    new Step('3')
+  ]
 
   constructor(
     private router: Router,

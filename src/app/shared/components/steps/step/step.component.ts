@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Step } from 'src/app/shared/models/step';
 
 @Component({
   selector: 'app-step',
@@ -7,8 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StepComponent implements OnInit {
 
-  @Input() content: string = '1'
-  @Input() state: boolean = true;
+  @Input() step: Step;
 
   constructor() { }
 

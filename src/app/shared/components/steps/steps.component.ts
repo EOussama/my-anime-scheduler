@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Step } from '../../models/step';
 
 @Component({
   selector: 'app-steps',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepsComponent implements OnInit {
 
+  @Input() steps: Step[] = [];
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }

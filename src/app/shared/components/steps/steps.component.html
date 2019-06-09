@@ -1,3 +1,4 @@
-<p>
-  <app-step></app-step>
-</p>
+<div class="steps-wrapper">
+  <app-step *ngFor="let step of this.steps"
+    [step]="step"></app-step>
+</div>
