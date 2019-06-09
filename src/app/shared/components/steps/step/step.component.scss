@@ -1,0 +1,29 @@
+@import './../../../../../sass/utils/colors';
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 40px;
+  width: 40px;
+
+  border: 4px solid currentColor;
+  border-radius: 50%;
+
+  color: #afafaf;
+
+  transition-duration: 0.5s;
+  transition-property: color;
+
+  &__content {
+    font-size: 18px;
+    font-weight: bold;
+
+    color: currentColor;
+  }
+
+  &.active {
+    color: lighten($color-primary, 10%);
+  }
+}
