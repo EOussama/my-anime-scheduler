@@ -52,15 +52,25 @@ export class MALloadComponent implements OnInit {
       this.mal.isValid(username).subscribe(
         (data) => {
           this.loaders.MALAccountfetch = false;
-          console.log("Exists");
+          this.updateStep(0, true);
         },
         (error: HttpErrorResponse) => {
           if (error.status === 404) {
             this.loaders.MALAccountfetch = false;
-            console.log('Doesn\'t exists');
+            this.updateStep(0, false);
           }
         }
       )
     }
+  }
+
+  /**
+   * Updates the steps
+   * 
+   * @param step The index of the step to update
+   * @param state The state to update the step to
+   */
+  updateStep(step: number, state: boolean) {
+    this.steps[step].state = state;
   }
 }
