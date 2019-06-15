@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
 
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
 import { MalService } from 'src/app/shared/services/mal.service';
-import { promise } from 'protractor';
+
 import { MatStepper } from '@angular/material';
 
 @Component({
@@ -19,26 +18,33 @@ export class MALloadComponent implements OnInit {
    * The loaders
    */
   loaders = {
-    MALAccountfetch: false
+    MALAccountfetch: false,
+    MALAccountConfirm: false
   };
 
   /**
    * Validators
    */
   validators = {
-    MALLAccountFetch: {
-      invalidMALAccount: false
-    }
+    MALLAccountFetch: false
   };
 
+  /**
+   * The validation forms
+   */
   loadingForm: FormGroup;
   confirmationForm: FormGroup;
 
+  /**
+   * The confirmation key
+   */
+  confirmationKey: string;
+
   constructor(
     private mal: MalService,
+    private malLoader: MalAccountLoaderService,
     private router: Router,
-    private route: ActivatedRoute,
-    private malLoader: MalAccountLoaderService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -46,13 +52,18 @@ export class MALloadComponent implements OnInit {
       username: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(16)])
     });
 
-    this.confirmationForm = new FormGroup({});
+    this.confirmationForm = new FormGroup({
+      confirmation: new FormControl(false, this.confirmationValidator)
+    });
+
+    this.confirmationKey = 'The kingdom of Morocco, Tangier';
   }
 
-  test() {
-    console.log(this.loadingForm.controls['username']);
-  }
-
+  /**
+   * Handles MAL accounts validation
+   * 
+   * @param stepper The stepper element
+   */
   onAccountLoadClicked(stepper: MatStepper): void {
     const username: string = this.loadingForm.value['username'];
 
@@ -66,9 +77,45 @@ export class MALloadComponent implements OnInit {
       },
       error => {
         this.loadingForm.controls['username'].setErrors({ 'invalid-username': true });
-        this.validators.MALLAccountFetch.invalidMALAccount = true;
+        this.validators.MALLAccountFetch = true;
         this.loaders.MALAccountfetch = false;
       }
     );
+  }
+
+  /**
+   * Handles MAL accounts confirmation
+   * 
+   * @param stepper The stepper element
+   */
+  onAccountConfirmClicked(stepper: MatStepper): void {
+    const username: string = this.loadingForm.value['username'];
+
+    this.loaders.MALAccountConfirm = true;
+
+    this.mal.confirmAccount(username, this.confirmationKey)
+      .then(res => {
+        if (res === true) {
+          this.confirmationForm.controls['confirmation'].setErrors(null);
+          this.loaders.MALAccountConfirm = false;
+          stepper.next();
+        } else {
+          this.confirmationForm.controls['confirmation'].setErrors({ 'confirmed': true });
+          this.loaders.MALAccountConfirm = false;
+        }
+      })
+      .catch(error => {
+        this.confirmationForm.controls['confirmation'].setErrors({ 'confirmed': true });
+        this.loaders.MALAccountConfirm = false;
+      });
+  }
+
+  /**
+   * Validates the MAL account confirmation step
+   * 
+   * @param control The control to validate
+   */
+  confirmationValidator(control: FormControl): { [s: string]: boolean } {
+    return { 'confirmed': control.value === true };
   }
 }

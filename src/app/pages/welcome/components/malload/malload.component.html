@@ -2,7 +2,6 @@
   <mat-vertical-stepper #stepper
     [linear]="true">
     <mat-step class="malload__step"
-      [editable]="false"
       [stepControl]="this.loadingForm">
       <form [formGroup]="this.loadingForm">
         <ng-template matStepLabel>Fill out your MAL username</ng-template>
@@ -32,33 +31,44 @@
           <button mat-raised-button
             color="primary"
             class="step-btn"
-            [ngClass]="{'invalid': this.validators.MALLAccountFetch.invalidMALAccount || (this.loadingForm.invalid && this.loadingForm.touched)}"
+            [ngClass]="{'invalid': this.validators.MALLAccountFetch || (this.loadingForm.invalid && this.loadingForm.touched)}"
             [disabled]="this.loadingForm.invalid || this.loaders.MALAccountfetch"
             (click)="this.onAccountLoadClicked(stepper)">{{ this.loaders.MALAccountfetch ? 'Loading...' : 'Next' }}</button>
         </div>
       </form>
     </mat-step>
     <mat-step class="malload__step"
-      [editable]="false"
       [stepControl]="this.confirmationForm">
       <form [formGroup]="this.confirmationForm">
         <ng-template matStepLabel>Confirm your MAL account</ng-template>
-        <!-- <mat-form-field>
-          <input matInput
-            placeholder="Address"
-            formControlName=""
-            required>
-        </mat-form-field> -->
-        <div>
-          <button mat-button
-            matStepperPrevious>Back</button>
-          <button mat-button
-            matStepperNext>Next</button>
+        <mat-hint class="confirmation-error">
+          <p>
+            <small>
+              In order to confirm that the MAL account <strong>{{ this.loadingForm.value['username'] }}</strong>
+              belongs to you, make sure to change your location to <strong>{{ this.confirmationKey }}</strong>, then
+              press
+              the button bellow.
+            </small>
+          </p>
+        </mat-hint>
+        <div class="confirmation-btn">
+          <button mat-raised-button
+            color="primary"
+            class="step-btn"
+            [ngClass]="{'invalid': this.confirmationForm.controls['confirmation'].hasError('confirmed')}"
+            [disabled]="this.loaders.MALAccountConfirm"
+            (click)="this.onAccountConfirmClicked(stepper)">{{ this.loaders.MALAccountConfirm ? 'Confirming...' : 'Confirm MAL account' }}</button>
         </div>
+        <mat-error class="confirmation-error"
+          *ngIf="this.confirmationForm.controls['confirmation'].hasError('confirmed')">
+          <small>
+            The key <strong>{{this.confirmationKey }}</strong> and
+            <strong>{{ this.loadingForm.value['username'] }}</strong>'s location don't match.
+          </small>
+        </mat-error>
       </form>
     </mat-step>
-    <mat-step class="malload__step"
-      [editable]="false">
+    <mat-step class="malload__step">
       <ng-template matStepLabel>Done</ng-template>
       You are now done.
       <div>

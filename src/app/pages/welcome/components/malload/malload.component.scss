@@ -5,12 +5,21 @@
   .step-btn {
     margin-top: 15px;
     transition-duration: 0.3s;
-    transition-property: margin-top;
+    transition-property: margin;
     width: 100%;
 
     &.invalid {
       margin-top: 25px;
     }
+  }
+
+  .confirmation-btn .step-btn.invalid {
+    margin: 5px 0 20px 0;
+  }
+
+  .confirmation-error,
+  .confirmation-hint {
+    text-align: center;
   }
 
   input.ng-invalid.ng-touched {
