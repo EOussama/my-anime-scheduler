@@ -43,7 +43,7 @@ export class MALloadComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadingForm = new FormGroup({
-      username: new FormControl('', [Validators.required])
+      username: new FormControl('', [Validators.required,])
     });
 
     this.confirmationForm = new FormGroup({});
@@ -56,13 +56,18 @@ export class MALloadComponent implements OnInit {
 
     this.mal.isValid(username).subscribe(
       res => {
+        this.loadingForm.controls['username'].setErrors(null);
         this.loaders.MALAccountfetch = false;
         stepper.next();
+
+        console.log(res);
       },
       error => {
-        this.loaders.MALAccountfetch = false;
+        this.loadingForm.controls['username'].setErrors({ 'invalid-username': true });
         this.validators.MALLAccountFetch.invalidMALAccount = true;
-        console.log('error', this.validators.MALLAccountFetch.invalidMALAccount);
+        this.loaders.MALAccountfetch = false;
+
+        console.log(error);
       }
     );
   }
