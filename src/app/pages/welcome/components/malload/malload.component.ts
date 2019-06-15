@@ -45,8 +45,7 @@ export class MALloadComponent implements OnInit {
     private core: CoreService,
     private mal: MalService,
     private malLoader: MalAccountLoaderService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -114,6 +113,18 @@ export class MALloadComponent implements OnInit {
       });
   }
 
+  /**
+   * Handles MAL accounts verification
+   */
+  onAccountDoneClicked(): void {
+    console.log('Done');
+  }
+
+  /**
+   * Resets the stepper
+   * 
+   * @param stepper The stepper to reset
+   */
   onStepperResetClicked(stepper: MatStepper): void {
     this.loaders.MALAccountFetch = false;
     this.loaders.MALAccountConfirm = false;

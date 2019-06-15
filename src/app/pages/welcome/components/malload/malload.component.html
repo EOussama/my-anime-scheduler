@@ -29,7 +29,7 @@
           </mat-error>
         </mat-form-field>
         <div>
-          <button mat-raised-button
+          <button mat-flat-button
             color="primary"
             class="step-btn"
             [ngClass]="{'invalid': !this.validators.MALAccountFetch || (this.loadingForm.invalid && this.loadingForm.touched)}"
@@ -59,7 +59,7 @@
             class="step-btn"
             href="https://myanimelist.net/editprofile.php"
             target="_blank">Edit MAL location</a>
-          <button mat-raised-button
+          <button mat-flat-button
             color="primary"
             class="step-btn"
             [disabled]="this.loaders.MALAccountConfirm"
@@ -85,14 +85,10 @@
     </mat-step>
     <mat-step class="malload__step"
       [editable]="false">
-      <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-      <div>
-        <button mat-button
-          matStepperPrevious>Back</button>
-        <button mat-button
-          (click)="stepper.reset()">Reset</button>
-      </div>
+      <button mat-raised-button
+        color="primary"
+        class="step-btn"
+        (click)="this.onAccountDoneClicked()">Done</button>
     </mat-step>
   </mat-vertical-stepper>
 
