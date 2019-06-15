@@ -5,13 +5,13 @@ export const routeAnimation = trigger('routeAnimations', [
     query(':enter', [
       style({
         opacity: '0',
-        transform: 'translateY(-100px)'
+        transform: 'translateY(-20px)'
       })
     ]),
     query(':leave', [
       animate('300ms ease-in-out', style({
         opacity: '0',
-        transform: 'translateY(-100px)'
+        transform: 'translateY(-20px)'
       }))
     ]),
     query(':enter', [

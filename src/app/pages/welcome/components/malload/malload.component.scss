@@ -27,7 +27,11 @@
     text-align: center;
   }
 
-  input.ng-invalid.ng-touched {
-    color: red;
+  .input-field {
+    width: 100%;
+
+    &.ng-invalid.ng-touched {
+      color: red;
+    }
   }
 }

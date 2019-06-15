@@ -20,7 +20,6 @@ export class CoreService {
    * Loads the data
    */
   public loadData(data: any): void {
-    console.log('Started');
     this.settings.account.key = data.account.key;
     this.settings.account.username = data.account.username;
   }
