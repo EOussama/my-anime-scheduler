@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatIconModule, MatInputModule } from "@angular/material";
+import { MatButtonModule, MatIconModule, MatInputModule, MatStepperModule } from "@angular/material";
 
 import { WelcomeRoutingModule } from './welcome-routing.module';
 
@@ -25,6 +26,8 @@ import { StateService } from './services/state.service';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatStepperModule,
+    ReactiveFormsModule,
     WelcomeRoutingModule,
   ],
   providers: [StateService],

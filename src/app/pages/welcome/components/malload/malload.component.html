@@ -1,3 +1,54 @@
-<div class="malload-wrapper">
-
+<div class="malload">
+  <mat-vertical-stepper #stepper
+    [linear]="true">
+    <mat-step [stepControl]="this.loadingForm">
+      <form [formGroup]="this.loadingForm">
+        <ng-template matStepLabel>Fill out your MAL username</ng-template>
+        <mat-form-field>
+          <input #loadingInput
+            matInput
+            placeholder="MAL username"
+            formControlName="username">
+          <mat-error *ngIf="this.loadingForm.invalid">
+            Please enter a valid MAL username
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button
+            matStepperNext
+            color="primary"
+            class="step-btn"
+            [ngClass]="{'invalid': this.loadingForm.invalid && this.loadingForm.touched}"
+            [disabled]="!this.loadingForm.valid">{{ this.loadingForm.pending ? 'Loading...' : 'Next' }}</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="this.confirmationForm">
+      <form [formGroup]="this.confirmationForm">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <!-- <mat-form-field>
+          <input matInput
+            placeholder="Address"
+            formControlName=""
+            required>
+        </mat-form-field> -->
+        <div>
+          <button mat-button
+            matStepperPrevious>Back</button>
+          <button mat-button
+            matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button
+          matStepperPrevious>Back</button>
+        <button mat-button
+          (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
 </div>

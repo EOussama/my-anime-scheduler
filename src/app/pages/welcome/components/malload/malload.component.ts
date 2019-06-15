@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
 import { MalService } from 'src/app/shared/services/mal.service';
-import { Step } from 'src/app/shared/models/step';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-malload',
@@ -20,6 +20,9 @@ export class MALloadComponent implements OnInit {
     MALAccountfetch: false
   }
 
+  loadingForm: FormGroup;
+  confirmationForm: FormGroup;
+
   constructor(
     private mal: MalService,
     private router: Router,
@@ -28,5 +31,20 @@ export class MALloadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadingForm = new FormGroup({
+      username: new FormControl('', [Validators.required], this.MALAccountValidator)
+    });
+
+    this.confirmationForm = new FormGroup({});
+  }
+
+  MALAccountValidator(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>((resolve, reject) => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    });
+
+    return promise;
   }
 }
