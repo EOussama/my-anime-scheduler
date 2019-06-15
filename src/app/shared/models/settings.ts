@@ -1,5 +1,12 @@
 import { Account } from './account';
 
+/**
+ * The settings' model
+ */
 export class Settings {
-  account: Account;
+  public account: Account;
+
+  constructor() {
+    this.account = new Account();
+  }
 }

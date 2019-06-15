@@ -6,6 +6,7 @@ import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-acco
 import { MalService } from 'src/app/shared/services/mal.service';
 
 import { MatStepper } from '@angular/material';
+import { CoreService } from 'src/app/shared/services/core.service';
 
 @Component({
   selector: 'app-malload',
@@ -41,6 +42,7 @@ export class MALloadComponent implements OnInit {
   confirmationKey: string;
 
   constructor(
+    private core: CoreService,
     private mal: MalService,
     private malLoader: MalAccountLoaderService,
     private router: Router,
@@ -56,7 +58,8 @@ export class MALloadComponent implements OnInit {
       confirmation: new FormControl(false, this.confirmationValidator)
     });
 
-    this.confirmationKey = 'The kingdom of Morocco, Tangier';
+    // Getting the confirmation key
+    this.confirmationKey = this.core.settings.account.key;
   }
 
   /**

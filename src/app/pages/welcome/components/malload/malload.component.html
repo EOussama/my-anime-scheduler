@@ -51,13 +51,18 @@
             </small>
           </p>
         </mat-hint>
-        <div class="confirmation-btn">
+        <div class="confirmation-btn"
+          [ngClass]="{'invalid': this.confirmationForm.controls['confirmation'].hasError('confirmed')}">
           <button mat-raised-button
             color="primary"
             class="step-btn"
-            [ngClass]="{'invalid': this.confirmationForm.controls['confirmation'].hasError('confirmed')}"
             [disabled]="this.loaders.MALAccountConfirm"
             (click)="this.onAccountConfirmClicked(stepper)">{{ this.loaders.MALAccountConfirm ? 'Confirming...' : 'Confirm MAL account' }}</button>
+          <a mat-stroked-button
+            color="primary"
+            class="step-btn"
+            href="https://myanimelist.net/editprofile.php"
+            target="_blank">Edit MAL location</a>
         </div>
         <mat-error class="confirmation-error"
           *ngIf="this.confirmationForm.controls['confirmation'].hasError('confirmed')">

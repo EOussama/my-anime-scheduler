@@ -5,7 +5,7 @@
   .step-btn {
     margin-top: 15px;
     transition-duration: 0.3s;
-    transition-property: margin;
+    transition-property: margin-top;
     width: 100%;
 
     &.invalid {
@@ -13,8 +13,13 @@
     }
   }
 
-  .confirmation-btn .step-btn.invalid {
-    margin: 5px 0 20px 0;
+  .confirmation-btn {
+    transition-duration: 0.3s;
+    transition-property: margin;
+
+    &.invalid {
+      margin: 5px 0 20px 0;
+    }
   }
 
   .confirmation-error,
