@@ -3,12 +3,13 @@
     padding-top: 50px;
   }
   .step-btn {
+    margin-top: 15px;
     transition-duration: 0.3s;
     transition-property: margin-top;
     width: 100%;
 
     &.invalid {
-      margin-top: 30px;
+      margin-top: 25px;
     }
   }
 

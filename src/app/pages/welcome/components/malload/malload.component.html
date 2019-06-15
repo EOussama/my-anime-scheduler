@@ -9,10 +9,23 @@
         <mat-form-field>
           <input #loadingInput
             matInput
+            autocomplete="off"
             placeholder="MAL username"
             formControlName="username">
-          <mat-error *ngIf="this.loadingForm.invalid && this.loadingForm.touched">
-            Please enter a valid MAL username
+
+          <mat-hint align="end">{{loadingInput.value.length}} / 16</mat-hint>
+
+          <mat-error *ngIf="this.loadingForm.controls['username'].hasError('required')">
+            Please input a valid MAL username.
+          </mat-error>
+          <mat-error *ngIf="this.loadingForm.controls['username'].hasError('minlength')">
+            MAL usernames should be atleast 2 characters long.
+          </mat-error>
+          <mat-error *ngIf="this.loadingForm.controls['username'].hasError('maxlength')">
+            MAL usernames should not exceed 16 characters.
+          </mat-error>
+          <mat-error *ngIf="this.loadingForm.controls['username'].hasError('invalid-username')">
+            <strong>{{ this.loadingForm.value['username'] }}</strong> is not a valid MAL username.
           </mat-error>
         </mat-form-field>
         <div>
