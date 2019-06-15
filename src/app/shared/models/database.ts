@@ -1,6 +1,5 @@
 import { environment } from 'src/environments/environment';
 import { KeyGenerator } from 'src/app/shared/helpers/keygenerator';
-import { CoreService } from '../services/core.service';
 
 /**
  * The database model
@@ -54,6 +53,18 @@ export class Database {
         console.info('[MAS] Database was successfully loaded!');
         resolve(db);
       }
+    });
+  }
+
+  /**
+   * Saves the database
+   * 
+   * @param data The data to save
+   */
+  public saveData(data: any): Promise<any> {
+    return new Promise(resolve => {
+      const db = JSON.stringify(data);
+      localStorage.setItem(this.dbname, db);
     });
   }
 }

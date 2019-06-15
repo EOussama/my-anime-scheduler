@@ -58,7 +58,7 @@ export class MALloadComponent implements OnInit {
     });
 
     // Getting the confirmation key
-    this.confirmationKey = this.core.settings.account.key;
+    this.confirmationKey = this.core.account.key;
   }
 
   /**
@@ -117,7 +117,7 @@ export class MALloadComponent implements OnInit {
    * Handles MAL accounts verification
    */
   onAccountDoneClicked(): void {
-    this.malLoader.onMALAccountLoaded(true);
+    this.malLoader.onMALAccountLoaded(this.loadingForm.value['username']);
     this.router.navigate(['/welcome']);
   }
 

@@ -14,6 +14,4 @@ export class StateService {
     MALAccount: false,
     permission: false
   };
-
-  constructor() { }
 }
