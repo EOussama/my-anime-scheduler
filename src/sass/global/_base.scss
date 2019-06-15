@@ -6,6 +6,11 @@
 
 @import './../utils/colors';
 
+body,
+html {
+  font-size: 16px;
+}
+
 // #region Scrollbar
 
 ::-webkit-scrollbar {

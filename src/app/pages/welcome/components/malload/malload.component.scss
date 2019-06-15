@@ -35,9 +35,17 @@
     }
   }
 
-  .back-btn {
+  .footer-btn {
     display: block;
-    margin: 40px auto 0 auto;
+    margin: auto;
     width: 75%;
+
+    &:first-of-type {
+      margin: 40px auto 10px auto;
+    }
+  }
+
+  .devider {
+    margin-top: 15px;
   }
 }

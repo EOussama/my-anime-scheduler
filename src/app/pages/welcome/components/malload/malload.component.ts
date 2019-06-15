@@ -19,7 +19,7 @@ export class MALloadComponent implements OnInit {
    * The loaders
    */
   loaders = {
-    MALAccountfetch: false,
+    MALAccountFetch: false,
     MALAccountConfirm: false
   };
 
@@ -27,7 +27,7 @@ export class MALloadComponent implements OnInit {
    * Validators
    */
   validators = {
-    MALLAccountFetch: false
+    MALAccountFetch: false
   };
 
   /**
@@ -70,18 +70,19 @@ export class MALloadComponent implements OnInit {
   onAccountLoadClicked(stepper: MatStepper): void {
     const username: string = this.loadingForm.value['username'];
 
-    this.loaders.MALAccountfetch = true;
+    this.loaders.MALAccountFetch = true;
 
     this.mal.isValid(username).subscribe(
       res => {
         this.loadingForm.controls['username'].setErrors(null);
-        this.loaders.MALAccountfetch = false;
+        this.validators.MALAccountFetch = true;
+        this.loaders.MALAccountFetch = false;
         stepper.next();
       },
       error => {
         this.loadingForm.controls['username'].setErrors({ 'invalid-username': true });
-        this.validators.MALLAccountFetch = true;
-        this.loaders.MALAccountfetch = false;
+        this.validators.MALAccountFetch = false;
+        this.loaders.MALAccountFetch = false;
       }
     );
   }
@@ -111,6 +112,14 @@ export class MALloadComponent implements OnInit {
         this.confirmationForm.controls['confirmation'].setErrors({ 'confirmed': true });
         this.loaders.MALAccountConfirm = false;
       });
+  }
+
+  onStepperResetClicked(stepper: MatStepper): void {
+    this.loaders.MALAccountFetch = false;
+    this.loaders.MALAccountConfirm = false;
+    this.validators.MALAccountFetch = false;
+
+    stepper.reset();
   }
 
   /**
