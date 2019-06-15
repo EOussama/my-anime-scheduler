@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
 import { MalService } from 'src/app/shared/services/mal.service';
 import { promise } from 'protractor';
+import { MatStepper } from '@angular/material';
 
 @Component({
   selector: 'app-malload',
@@ -19,7 +20,16 @@ export class MALloadComponent implements OnInit {
    */
   loaders = {
     MALAccountfetch: false
-  }
+  };
+
+  /**
+   * Validators
+   */
+  validators = {
+    MALLAccountFetch: {
+      invalidMALAccount: false
+    }
+  };
 
   loadingForm: FormGroup;
   confirmationForm: FormGroup;
@@ -33,33 +43,27 @@ export class MALloadComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadingForm = new FormGroup({
-      username: new FormControl('', [Validators.required], this.MALAccountValidator.bind(this))
+      username: new FormControl('', [Validators.required])
     });
 
     this.confirmationForm = new FormGroup({});
   }
 
-  MALAccountValidator(control: FormControl): Promise<any> | Observable<any> {
-    const username: string = (control.value as string).trim();
-    let validatorTimer: any = null;
+  onAccountLoadClicked(stepper: MatStepper): void {
+    const username: string = this.loadingForm.value['username'];
 
-    const promise = new Promise<any>(resolve => {
-      clearTimeout(validatorTimer);
+    this.loaders.MALAccountfetch = true;
 
-      validatorTimer = setTimeout(() => {
-        this.mal.isValid(username).subscribe(
-          res => {
-            console.log('data');
-            resolve(null);
-          },
-          error => {
-            console.log('error');
-            resolve({ "error": true });
-          }
-        );
-      }, 1000);
-    });
-
-    return promise;
+    this.mal.isValid(username).subscribe(
+      res => {
+        this.loaders.MALAccountfetch = false;
+        stepper.next();
+      },
+      error => {
+        this.loaders.MALAccountfetch = false;
+        this.validators.MALLAccountFetch.invalidMALAccount = true;
+        console.log('error', this.validators.MALLAccountFetch.invalidMALAccount);
+      }
+    );
   }
 }

@@ -11,17 +11,17 @@
             matInput
             placeholder="MAL username"
             formControlName="username">
-          <mat-error *ngIf="this.loadingForm.invalid">
+          <mat-error *ngIf="this.validators.MALLAccountFetch.invalidMALAccount || this.loadingForm.invalid">
             Please enter a valid MAL username
           </mat-error>
         </mat-form-field>
         <div>
           <button mat-raised-button
-            matStepperNext
             color="primary"
             class="step-btn"
             [ngClass]="{'invalid': this.loadingForm.invalid && this.loadingForm.touched}"
-            [disabled]="!this.loadingForm.valid">{{ this.loadingForm.pending ? 'Loading...' : 'Next' }}</button>
+            [disabled]="this.loadingForm.invalid || this.loaders.MALAccountfetch"
+            (click)="this.onAccountLoadClicked(stepper)">{{ this.loaders.MALAccountfetch ? 'Loading...' : 'Next' }}</button>
         </div>
       </form>
     </mat-step>
@@ -29,7 +29,7 @@
       [editable]="false"
       [stepControl]="this.confirmationForm">
       <form [formGroup]="this.confirmationForm">
-        <ng-template matStepLabel>Fill out your address</ng-template>
+        <ng-template matStepLabel>Confirm your MAL account</ng-template>
         <!-- <mat-form-field>
           <input matInput
             placeholder="Address"
