@@ -1,7 +1,9 @@
 <div class="malload">
   <mat-vertical-stepper #stepper
     [linear]="true">
-    <mat-step [stepControl]="this.loadingForm">
+    <mat-step class="malload__step"
+      [editable]="false"
+      [stepControl]="this.loadingForm">
       <form [formGroup]="this.loadingForm">
         <ng-template matStepLabel>Fill out your MAL username</ng-template>
         <mat-form-field>
@@ -23,7 +25,9 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="this.confirmationForm">
+    <mat-step class="malload__step"
+      [editable]="false"
+      [stepControl]="this.confirmationForm">
       <form [formGroup]="this.confirmationForm">
         <ng-template matStepLabel>Fill out your address</ng-template>
         <!-- <mat-form-field>
@@ -40,7 +44,8 @@
         </div>
       </form>
     </mat-step>
-    <mat-step>
+    <mat-step class="malload__step"
+      [editable]="false">
       <ng-template matStepLabel>Done</ng-template>
       You are now done.
       <div>

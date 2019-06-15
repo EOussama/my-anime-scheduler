@@ -1,4 +1,8 @@
 .malload {
+  &__step {
+    padding-top: 50px;
+  }
+
   .step-btn {
     transition-duration: 0.3s;
     transition-property: margin-top;
