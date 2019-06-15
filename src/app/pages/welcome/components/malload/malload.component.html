@@ -85,6 +85,19 @@
     </mat-step>
     <mat-step class="malload__step"
       [editable]="false">
+      <ng-template matStepLabel>Done</ng-template>
+      <mat-hint class="confirmation-hint">
+        <p>
+          <small>
+            You have successfully confirmed your MAL account <strong>{{ this.loadingForm.value['username'] }}</strong>.
+          </small>
+        </p>
+        <p>
+          <small>
+            Click the button below to conclude the confirmation proccess.
+          </small>
+        </p>
+      </mat-hint>
       <button mat-raised-button
         color="primary"
         class="step-btn"

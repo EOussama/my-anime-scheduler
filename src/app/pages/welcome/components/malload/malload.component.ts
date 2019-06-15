@@ -117,7 +117,8 @@ export class MALloadComponent implements OnInit {
    * Handles MAL accounts verification
    */
   onAccountDoneClicked(): void {
-    console.log('Done');
+    this.malLoader.onMALAccountLoaded(true);
+    this.router.navigate(['/welcome']);
   }
 
   /**
