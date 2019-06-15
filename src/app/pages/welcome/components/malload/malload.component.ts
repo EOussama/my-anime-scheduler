@@ -14,15 +14,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class MALloadComponent implements OnInit {
 
   /**
-   * MAL user loading steps
-   */
-  steps: Step[] = [
-    new Step('1'),
-    new Step('2', 100),
-    new Step('3', 100)
-  ]
-
-  /**
    * The loaders
    */
   loaders = {
@@ -37,40 +28,5 @@ export class MALloadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  /**
-   * Handles the loading if the input MAL user
-   * 
-   * @param MALUsernameRef The MAL username input
-   */
-  onMALAccountLoadClicked(MALUsernameRef: HTMLInputElement): void {
-    const username: string = MALUsernameRef.value.trim();
-
-    if (username.length > 0) {
-      this.loaders.MALAccountfetch = true;
-      this.mal.isValid(username).subscribe(
-        (data) => {
-          this.loaders.MALAccountfetch = false;
-          this.updateStep(0, true);
-        },
-        (error: HttpErrorResponse) => {
-          if (error.status === 404) {
-            this.loaders.MALAccountfetch = false;
-            this.updateStep(0, false);
-          }
-        }
-      )
-    }
-  }
-
-  /**
-   * Updates the steps
-   * 
-   * @param step The index of the step to update
-   * @param state The state to update the step to
-   */
-  updateStep(step: number, state: boolean) {
-    this.steps[step].state = state;
   }
 }

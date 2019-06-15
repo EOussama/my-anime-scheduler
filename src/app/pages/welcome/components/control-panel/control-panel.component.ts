@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 import { StateService } from '../../services/state.service';
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
 
-import { fadeLoadButton, fadePermButton, fadeStartButton } from './animations/animations'
+import { slideUp, fadeLoadButton, fadePermButton, fadeStartButton } from './animations/animations'
 
 @Component({
   selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
   styleUrls: ['./control-panel.component.scss'],
   animations: [
+    slideUp,
     fadeLoadButton,
     fadePermButton,
     fadeStartButton

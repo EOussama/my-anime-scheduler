@@ -1,20 +1,3 @@
 <div class="malload-wrapper">
-  <div class="malload-wrapper__steps">
-    <app-steps [steps]="this.steps"></app-steps>
-  </div>
-  <div class="malload-wrapper__content">
-    <div class="user-fetch-step">
-      <mat-form-field>
-        <input #MALUsernameRef
-          matInput
-          placeholder="MAL username">
-      </mat-form-field>
-      <button mat-flat-button
-        [disabled]="this.loaders.MALAccountfetch"
-        (click)='onMALAccountLoadClicked(MALUsernameRef)'
-        color="primary">
-        {{ this.loaders.MALAccountfetch === true ? 'Loading account...' : 'Load account' }}
-      </button>
-    </div>
-  </div>
+
 </div>

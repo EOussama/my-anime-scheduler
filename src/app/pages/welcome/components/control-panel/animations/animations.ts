@@ -1,5 +1,15 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
+export const slideUp = trigger('slideUp', [
+  transition('void => in', [
+    style({
+      transform: 'translateY(20px)',
+      opacity: 0
+    }),
+    animate('0.5s 0.5s ease-in-out')
+  ])
+]);
+
 export const fadeLoadButton = trigger('fadeLoadButton', [
   state('in', style({ opacity: '1' })),
   transition('void => in', [

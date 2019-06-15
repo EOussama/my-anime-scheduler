@@ -11,17 +11,13 @@ import { ControlPanelComponent } from './components/control-panel/control-panel.
 import { RequirementBtnComponent } from './../../shared/components/requirement-btn/requirement-btn.component';
 import { MALloadComponent } from './components/malload/malload.component';
 import { StateService } from './services/state.service';
-import { StepsComponent } from 'src/app/shared/components/steps/steps.component';
-import { StepComponent } from 'src/app/shared/components/steps/step/step.component';
 
 @NgModule({
   declarations: [
     WelcomeComponent,
     ControlPanelComponent,
     MALloadComponent,
-    RequirementBtnComponent,
-    StepsComponent,
-    StepComponent
+    RequirementBtnComponent
   ],
   imports: [
     CommonModule,

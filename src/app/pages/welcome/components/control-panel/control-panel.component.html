@@ -1,15 +1,18 @@
-<app-requirement-btn [prop-text]="'Load MAL account'"
-  [prop-state]="this.state.requiredSteps.MALAccount"
-  (onClickEvent)="loadMALAccount()"
-  [@fadeLoadButton]="'in'"></app-requirement-btn>
-<app-requirement-btn [prop-text]="'Grant notifications permission'"
-  [prop-state]="this.state.requiredSteps.permission"
-  (onClickEvent)="grantPermission()"
-  [@fadePermButton]="'in'"></app-requirement-btn>
-<button mat-flat-button
-  color="primary"
-  [disabled]="!this.isExtReady()"
-  [@fadeStartButton]="'in'"
-  (click)="onStartClicked()">
-  Get started
-</button>
+<div class="control-panel"
+  [@slideUp]="'in'">
+  <app-requirement-btn [prop-text]="'Load MAL account'"
+    [prop-state]="this.state.requiredSteps.MALAccount"
+    (onClickEvent)="loadMALAccount()"
+    [@fadeLoadButton]="'in'"></app-requirement-btn>
+  <app-requirement-btn [prop-text]="'Grant notifications permission'"
+    [prop-state]="this.state.requiredSteps.permission"
+    (onClickEvent)="grantPermission()"
+    [@fadePermButton]="'in'"></app-requirement-btn>
+  <button mat-flat-button
+    color="primary"
+    [disabled]="!this.isExtReady()"
+    [@fadeStartButton]="'in'"
+    (click)="onStartClicked()">
+    Get started
+  </button>
+</div>
