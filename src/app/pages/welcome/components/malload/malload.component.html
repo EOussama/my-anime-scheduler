@@ -45,24 +45,23 @@
           <p>
             <small>
               In order to confirm that the MAL account <strong>{{ this.loadingForm.value['username'] }}</strong>
-              belongs to you, make sure to change your location to <strong>{{ this.confirmationKey }}</strong>, then
-              press
-              the button bellow.
+              belongs to you, make sure to change the location in your MAL account to
+              <strong>{{ this.confirmationKey }}</strong>, then press the button bellow.
             </small>
           </p>
         </mat-hint>
         <div class="confirmation-btn"
           [ngClass]="{'invalid': this.confirmationForm.controls['confirmation'].hasError('confirmed')}">
-          <button mat-raised-button
-            color="primary"
-            class="step-btn"
-            [disabled]="this.loaders.MALAccountConfirm"
-            (click)="this.onAccountConfirmClicked(stepper)">{{ this.loaders.MALAccountConfirm ? 'Confirming...' : 'Confirm MAL account' }}</button>
           <a mat-stroked-button
             color="primary"
             class="step-btn"
             href="https://myanimelist.net/editprofile.php"
             target="_blank">Edit MAL location</a>
+          <button mat-raised-button
+            color="primary"
+            class="step-btn"
+            [disabled]="this.loaders.MALAccountConfirm"
+            (click)="this.onAccountConfirmClicked(stepper)">{{ this.loaders.MALAccountConfirm ? 'Confirming...' : 'Confirm MAL account' }}</button>
         </div>
         <mat-error class="confirmation-error"
           *ngIf="this.confirmationForm.controls['confirmation'].hasError('confirmed')">
@@ -84,4 +83,11 @@
       </div>
     </mat-step>
   </mat-vertical-stepper>
+
+  <button mat-stroked-button
+    color="warn"
+    class="back-btn"
+    routerLink="/welcome">
+    Cancel
+  </button>
 </div>
