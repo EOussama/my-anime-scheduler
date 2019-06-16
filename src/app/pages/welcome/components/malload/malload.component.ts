@@ -106,7 +106,7 @@ export class MALloadComponent implements OnInit {
 
         this.account.username = res['username'];
         this.account.profile = res['url'];
-        this.account.picture = res['image_url'];
+        this.account.picture = res['image_url'] || './assets/placeholder-avatar.png';
 
         stepper.next();
       },
