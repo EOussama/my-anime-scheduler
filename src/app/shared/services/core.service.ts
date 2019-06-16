@@ -38,6 +38,9 @@ export class CoreService {
       }
     };
 
-    this.database.saveData(db);
+    this.database.saveData(db)
+      .then(() => {
+        console.info('[MAS] Data saved!');
+      });
   }
 }

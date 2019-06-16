@@ -33,13 +33,13 @@ export class ControlPanelComponent implements OnInit {
       this.state.requiredSteps.MALAccount = accountLoaded !== '';
       this.core.account.username = accountLoaded;
 
+      console.info('[MAS] MAL Account loaded!');
       this.core.saveData();
     });
   }
 
   loadMALAccount(): void {
     this.router.navigate(['malload'], { relativeTo: this.route });
-    console.info('[MAS] MAL Account loaded!');
   }
 
   grantPermission(): void {

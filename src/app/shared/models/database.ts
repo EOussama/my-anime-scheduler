@@ -64,7 +64,9 @@ export class Database {
   public saveData(data: any): Promise<any> {
     return new Promise(resolve => {
       const db = JSON.stringify(data);
+
       localStorage.setItem(this.dbname, db);
+      resolve();
     });
   }
 }
