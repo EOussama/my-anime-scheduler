@@ -43,6 +43,14 @@
       [stepControl]="this.confirmationForm">
       <form [formGroup]="this.confirmationForm">
         <ng-template matStepLabel>Confirm your MAL account</ng-template>
+        <p class="mal-img">
+          <a target="_blank"
+            [href]="this.account.profile">
+            <img [src]="this.account.picture"
+              [alt]="this.account.username + '\'s MAL account picture'"
+              [title]="this.account.username">
+          </a>
+        </p>
         <mat-hint class="confirmation-hint">
           <p>
             <small>
@@ -63,7 +71,7 @@
             color="primary"
             class="step-btn"
             [disabled]="this.loaders.MALAccountConfirm"
-            (click)="this.onAccountConfirmClicked(stepper)">{{ this.loaders.MALAccountConfirm ? 'Confirming...' : 'Confirm MAL account' }}</button>
+            (click)="this.onAccountConfirmClicked(stepper)">{{ this.helpers.confirm.text() }}</button>
         </div>
         <div *ngIf="this.confirmationForm.controls['confirmation'].hasError('confirmed')">
           <mat-error class="confirmation-error">

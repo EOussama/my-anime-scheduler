@@ -48,4 +48,22 @@
   .devider {
     margin-top: 15px;
   }
+
+  .mal-img {
+    text-align: center;
+
+    img {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      height: 150px;
+      margin-top: 10px;
+      transition-duration: 0.3s;
+      transition-property: box-shadow transform;
+      width: 120px;
+
+      &:hover {
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+        transform: scale(1.01);
+      }
+    }
+  }
 }

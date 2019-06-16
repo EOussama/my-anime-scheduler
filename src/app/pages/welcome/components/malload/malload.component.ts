@@ -16,6 +16,15 @@ import { CoreService } from 'src/app/shared/services/core.service';
 export class MALloadComponent implements OnInit {
 
   /**
+   * Loaded MAL account
+   */
+  account = {
+    username: '',
+    profile: '',
+    picture: ''
+  };
+
+  /**
    * The loaders
    */
   loaders = {
@@ -51,6 +60,9 @@ export class MALloadComponent implements OnInit {
       },
       disabled: () => this.loadingForm.controls['username'].invalid || this.loaders.MALAccountFetch,
       text: () => this.loaders.MALAccountFetch ? 'Loading...' : 'Load MAL account'
+    },
+    confirm: {
+      text: () => this.loaders.MALAccountConfirm ? 'Confirming...' : 'Confirm MAL account'
     }
   };
 
@@ -91,6 +103,11 @@ export class MALloadComponent implements OnInit {
         this.loadingForm.controls['confirmation'].setErrors(null);
         this.validators.MALAccountFetch = true;
         this.loaders.MALAccountFetch = false;
+
+        this.account.username = res['username'];
+        this.account.profile = res['url'];
+        this.account.picture = res['image_url'];
+
         stepper.next();
       },
       error => {
