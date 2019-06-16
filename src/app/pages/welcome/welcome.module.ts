@@ -9,6 +9,7 @@ import { WelcomeRoutingModule } from './welcome-routing.module';
 
 import { StateService } from './services/state.service';
 import { MalAccountLoaderService } from './services/mal-account-loader.service';
+import { AuthGuard } from './guards/auth.guard';
 
 import { WelcomeComponent } from './welcome.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
@@ -33,7 +34,7 @@ import { MALloadComponent } from './components/malload/malload.component';
     ReactiveFormsModule,
     WelcomeRoutingModule,
   ],
-  providers: [StateService, MalAccountLoaderService],
+  providers: [StateService, MalAccountLoaderService, AuthGuard],
   exports: [WelcomeComponent]
 })
 export class WelcomeModule { }

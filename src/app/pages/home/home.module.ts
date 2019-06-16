@@ -12,7 +12,7 @@ import { HomeComponent } from './home.component';
     CommonModule,
     HomeRoutingModule
   ],
-  exports: [HomeComponent],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
+  exports: [HomeComponent]
 })
 export class HomeModule { }
