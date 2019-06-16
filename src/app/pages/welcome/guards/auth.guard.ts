@@ -10,8 +10,11 @@ export class AuthGuard implements CanActivate {
   constructor(private core: CoreService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return this.core.account.confirmed === false
-      ? true
-      : this.router.navigate(['/home']);
+    if (this.core.account.confirmed) {
+      this.router.navigate(['/home']);
+      return false;
+    } else {
+      return true;
+    }
   }
 }

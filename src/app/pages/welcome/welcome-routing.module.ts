@@ -10,7 +10,7 @@ import { MALloadComponent } from './components/malload/malload.component';
 
 const routes: Routes = [
   {
-    path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard], children: [
+    path: 'welcome', component: WelcomeComponent, /*canActivate: [AuthGuard],*/ children: [
       { path: '', component: ControlPanelComponent, data: { animation: 'ctrlpanel' } },
       { path: 'malload', component: MALloadComponent, data: { animation: 'malload' } }
     ]

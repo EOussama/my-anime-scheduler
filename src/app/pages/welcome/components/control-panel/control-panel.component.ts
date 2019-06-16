@@ -59,7 +59,7 @@ export class ControlPanelComponent implements OnInit {
   }
 
   onStartClicked(): void {
-    console.log('Get started');
+    this.router.navigate(['/home']);
   }
 
   isExtReady(): boolean {
