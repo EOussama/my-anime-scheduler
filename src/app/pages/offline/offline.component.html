@@ -1,3 +1,20 @@
-<p>
-  offline works!
-</p>
+<div class="offline">
+  <div class="offline__wrapper">
+    <div class="offline__logo"
+      [@fadeLogo]="'in'">
+      <img src="./assets/icon-title.png"
+        alt="MAS logo">
+    </div>
+    <div class="offline__content"
+      [@fadeContent]="'in'">
+      <p>
+        <mat-icon class="offline__icon">warning</mat-icon>
+        <span>Check yout internet connection</span>
+      </p>
+    </div>
+    <mat-progress-bar class="offline__progress"
+      color="accent"
+      mode="indeterminate"
+      [@fadeProgress]="'in'"></mat-progress-bar>
+  </div>
+</div>
