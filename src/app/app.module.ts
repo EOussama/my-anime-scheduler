@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HomeModule } from './pages/home/home.module';
 import { WelcomeModule } from './pages/welcome/welcome.module';
+import { OfflineModule } from './pages/offline/offline.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     HomeModule,
     WelcomeModule,
+    OfflineModule,
     AppRoutingModule,
   ],
   bootstrap: [AppComponent]
