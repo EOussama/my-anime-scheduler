@@ -25,7 +25,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.state.requiredSteps.MALAccount = this.core.account.username !== '';
+    this.state.requiredSteps.MALAccount = this.core.account.confirmed;
     this.state.requiredSteps.permission = Notification.permission === 'granted';
   }
 

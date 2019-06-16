@@ -31,6 +31,7 @@ export class ControlPanelComponent implements OnInit {
   ngOnInit(): void {
     this.state.malLoaderSubscription = this.malLoader.loadMALAccount().subscribe((accountLoaded: string) => {
       this.state.requiredSteps.MALAccount = accountLoaded !== '';
+      this.core.account.confirmed = accountLoaded !== '';
       this.core.account.username = accountLoaded;
 
       console.info('[MAS] MAL Account loaded!');

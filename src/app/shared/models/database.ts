@@ -22,6 +22,7 @@ export class Database {
     return new Promise<any>(resolve => {
       const db = {
         account: {
+          confirmed: false,
           username: '',
           key: KeyGenerator.generate()
         }

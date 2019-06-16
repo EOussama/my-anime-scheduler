@@ -23,8 +23,9 @@ export class CoreService {
    * Loads the data
    */
   public loadData(data: any): void {
-    this.account.key = data.account.key;
-    this.account.username = data.account.username;
+    this.account.confirmed = data['account']['confirmed'];
+    this.account.username = data['account']['username'];
+    this.account.key = data['account']['key'];
   }
 
   /**
@@ -33,6 +34,7 @@ export class CoreService {
   public saveData(): void {
     const db = {
       account: {
+        confirmed: this.account.confirmed,
         username: this.account.username,
         key: this.account.key
       }

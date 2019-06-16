@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { AuthGuard } from './guards/auth.guard';
 
 import { HomeComponent } from './home.component';
 
@@ -11,6 +12,7 @@ import { HomeComponent } from './home.component';
     CommonModule,
     HomeRoutingModule
   ],
-  exports: [HomeComponent]
+  exports: [HomeComponent],
+  providers: [AuthGuard]
 })
 export class HomeModule { }
