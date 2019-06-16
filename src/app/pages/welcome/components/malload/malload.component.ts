@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { MalAccountLoaderService } from 'src/app/pages/welcome/services/mal-account-loader.service';
@@ -41,6 +41,19 @@ export class MALloadComponent implements OnInit {
    */
   confirmationKey: string;
 
+  /**
+   * Helper functions
+   */
+  helpers = {
+    load: {
+      ngClass: {
+        invalid: () => this.loadingForm.controls['username'].invalid && this.loadingForm.touched
+      },
+      disabled: () => this.loadingForm.controls['username'].invalid || this.loaders.MALAccountFetch,
+      text: () => this.loaders.MALAccountFetch ? 'Loading...' : 'Load MAL account'
+    }
+  };
+
   constructor(
     private core: CoreService,
     private mal: MalService,
@@ -50,7 +63,8 @@ export class MALloadComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadingForm = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(16)])
+      username: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(16)]),
+      confirmation: new FormControl(false, this.loadValidator.bind(this))
     });
 
     this.confirmationForm = new FormGroup({
@@ -74,12 +88,14 @@ export class MALloadComponent implements OnInit {
     this.mal.isValid(username).subscribe(
       res => {
         this.loadingForm.controls['username'].setErrors(null);
+        this.loadingForm.controls['confirmation'].setErrors(null);
         this.validators.MALAccountFetch = true;
         this.loaders.MALAccountFetch = false;
         stepper.next();
       },
       error => {
         this.loadingForm.controls['username'].setErrors({ 'invalid-username': true });
+        this.loadingForm.controls['confirmation'].setErrors({ 'confirmed': true });
         this.validators.MALAccountFetch = false;
         this.loaders.MALAccountFetch = false;
       }
@@ -135,7 +151,16 @@ export class MALloadComponent implements OnInit {
   }
 
   /**
-   * Validates the MAL account confirmation step
+   * Validates the MAL account load steps
+   * 
+   * @param control The control to validate
+   */
+  loadValidator(control: FormControl): { [s: string]: boolean } {
+    return { 'confirmed': control.value === true };
+  }
+
+  /**
+   * Validates the MAL account confirmation steps
    * 
    * @param control The control to validate
    */

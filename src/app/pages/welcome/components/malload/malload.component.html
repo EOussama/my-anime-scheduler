@@ -32,9 +32,9 @@
           <button mat-flat-button
             color="primary"
             class="step-btn"
-            [ngClass]="{'invalid': !this.validators.MALAccountFetch || (this.loadingForm.invalid && this.loadingForm.touched)}"
-            [disabled]="this.loadingForm.invalid || this.loaders.MALAccountFetch"
-            (click)="this.onAccountLoadClicked(stepper)">{{ this.loaders.MALAccountFetch ? 'Loading...' : 'Load MAL account' }}</button>
+            [ngClass]="{'invalid': this.helpers.load.ngClass.invalid()}"
+            [disabled]="this.helpers.load.disabled()"
+            (click)="this.onAccountLoadClicked(stepper)">{{ this.helpers.load.text() }}</button>
         </div>
       </form>
     </mat-step>
