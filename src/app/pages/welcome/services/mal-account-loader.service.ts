@@ -1,17 +1,11 @@
-import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class MalAccountLoaderService {
 
   /**
    * The observable subject
    */
   private subject: Subject<string> = new Subject<string>();
-
-  constructor() { }
 
   /**
    * Returns the MAL loader observable

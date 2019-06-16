@@ -7,11 +7,13 @@ import { MatButtonModule, MatIconModule, MatInputModule, MatStepperModule, MatDi
 
 import { WelcomeRoutingModule } from './welcome-routing.module';
 
+import { StateService } from './services/state.service';
+import { MalAccountLoaderService } from './services/mal-account-loader.service';
+
 import { WelcomeComponent } from './welcome.component';
 import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 import { RequirementBtnComponent } from './../../shared/components/requirement-btn/requirement-btn.component';
 import { MALloadComponent } from './components/malload/malload.component';
-import { StateService } from './services/state.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { StateService } from './services/state.service';
     ReactiveFormsModule,
     WelcomeRoutingModule,
   ],
-  providers: [StateService],
+  providers: [StateService, MalAccountLoaderService],
   exports: [WelcomeComponent]
 })
 export class WelcomeModule { }

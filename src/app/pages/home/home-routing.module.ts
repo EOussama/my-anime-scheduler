@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from "@angular/router";
 
+import { HomeComponent } from "./home.component";
+
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: 'home', redirectTo: 'home' },
-  { path: 'welcome', redirectTo: 'welcome' }
+  { path: 'home', component: HomeComponent }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class HomeRoutingModule { }

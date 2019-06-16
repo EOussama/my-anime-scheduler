@@ -3,8 +3,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HomeModule } from './pages/home/home.module';
 import { WelcomeModule } from './pages/welcome/welcome.module';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -15,6 +17,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    HomeModule,
     WelcomeModule,
     AppRoutingModule,
   ],
