@@ -1,9 +1,24 @@
 {
   "name": "my-anime-scheduler",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "license": "MIT",
+  "description": "“MAS”, or “My Anime Scheduler” is a Chromium extension that helps you track your currently-watching Anime.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EOussama/my-anime-scheduler.git"
+  },
+  "keywords": [
+    "mas",
+    "anime",
+    "anime-scheduler",
+    "anime-tracker",
+    "anime-notifier"
+  ],
+  "author": "EOussama",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/EOussama/my-anime-scheduler/issues"
+  },
+  "homepage": "https://github.com/EOussama/my-anime-scheduler#readme",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",

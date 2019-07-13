@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "“MAS”, or “My Anime Scheduler” is a Chromium extension that helps you track your currently-watching Anime.",
   "main": "src/server/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EOussama/my-anime-scheduler.git"
