@@ -1,28 +1,46 @@
 {
-  "name": "my_anime_scheduler",
-  "version": "0.0.1",
-  "description": "“MAS”, or “My Anime Scheduler” is a Chromium extension that helps you track your currently-watching Anime.",
-  "main": "src/server/index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EOussama/my-anime-scheduler.git"
+  "name": "my-anime-scheduler",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
-  "keywords": [
-    "mas",
-    "anime",
-    "anime-scheduler",
-    "anime-tracker",
-    "anime-notifier"
-  ],
-  "author": "EOussama",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/EOussama/my-anime-scheduler/issues"
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~10.0.9",
+    "@angular/common": "~10.0.9",
+    "@angular/compiler": "~10.0.9",
+    "@angular/core": "~10.0.9",
+    "@angular/forms": "~10.0.9",
+    "@angular/platform-browser": "~10.0.9",
+    "@angular/platform-browser-dynamic": "~10.0.9",
+    "@angular/router": "~10.0.9",
+    "rxjs": "~6.5.5",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.3"
   },
-  "homepage": "https://github.com/EOussama/my-anime-scheduler#readme",
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-cli": "^2.2.0"
+    "@angular-devkit/build-angular": "~0.1000.6",
+    "@angular/cli": "~10.0.6",
+    "@angular/compiler-cli": "~10.0.9",
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~3.3.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~3.9.5"
   }
 }
