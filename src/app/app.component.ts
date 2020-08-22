@@ -1,16 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { create } from 'pkce';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'my-anime-scheduler';
-
-  ngOnInit(): void {
-    const codePair = create();
-    console.log({ codePair });
-  }
 }
